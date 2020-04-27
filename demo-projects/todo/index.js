@@ -7,7 +7,7 @@ const { StaticApp } = require('@keystonejs/app-static');
 
 const keystone = new Keystone({
   name: 'Keystone To-Do List',
-  adapter: new MongooseAdapter({ mongoUri: 'mongodb://localhost/todo' }),
+  adapter: new MongooseAdapter({ url: 'mongodb://localhost/todo' }),
 });
 
 keystone.createList('Todo', {

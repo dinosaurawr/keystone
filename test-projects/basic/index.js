@@ -44,7 +44,7 @@ const { MongooseAdapter } = require('@keystonejs/adapter-mongoose');
 
 const keystone = new Keystone({
   name: 'Cypress Test Project Basic',
-  adapter: new MongooseAdapter({ mongoUri: 'mongodb://localhost/cypress-test-project' }),
+  adapter: new MongooseAdapter({ url: 'mongodb://localhost/cypress-test-project' }),
   cookieSecret: 'qwerty',
 });
 
