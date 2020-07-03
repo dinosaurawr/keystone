@@ -1,5 +1,51 @@
 # @keystonejs/demo-custom-fields
 
+## 1.0.6
+
+### Patch Changes
+
+- [`5fc97cbf4`](https://github.com/keystonejs/keystone/commit/5fc97cbf4489587a3a8cb38c04ba81fc2cb1fc5a) [#3171](https://github.com/keystonejs/keystone/pull/3171) Thanks [@timleslie](https://github.com/timleslie)! - Hooks no longer recieve a `{ query }` argument. This functionality has been superseded by `context.executeGraphQL()`.
+
+  ```
+  {
+    ...
+    hooks: {
+      resolveInput: async ({ actions: { query } } ) => {
+        ...
+        const { data, errors } = await query(`{ ... }`);
+        ...
+      }
+    }
+  }
+  ```
+
+  should be changed to
+
+  ```
+  {
+    ...
+    hooks: {
+      resolveInput: async ({ context } ) => {
+        ...
+        const { data, errors } = await context.executeGraphQL({ query: `{ ... }` });
+        ...
+      }
+    }
+  }
+  ```
+
+  See [the docs](/docs/discussions/server-side-graphql.md) for more details on how to use `context.executeGraphQL()`.
+
+* [`51aef1ef0`](https://github.com/keystonejs/keystone/commit/51aef1ef06a89422e89a6118b7820848d5970669) [#3146](https://github.com/keystonejs/keystone/pull/3146) Thanks [@Vultraz](https://github.com/Vultraz)! - Migrated to @primer/octicons-react v10.
+
+* Updated dependencies [[`8480f889a`](https://github.com/keystonejs/keystone/commit/8480f889a492d83ee805f19877d49fd112117939), [`02f069f0b`](https://github.com/keystonejs/keystone/commit/02f069f0b6e28ccfe6d5cdeb59ab01bde27a655e), [`e6117d259`](https://github.com/keystonejs/keystone/commit/e6117d259e0ceeacc0b42e3db0bd39dd39537090), [`5fc97cbf4`](https://github.com/keystonejs/keystone/commit/5fc97cbf4489587a3a8cb38c04ba81fc2cb1fc5a), [`56e1798d6`](https://github.com/keystonejs/keystone/commit/56e1798d6815723cfba01e6d7dc6b4fe73d4447b), [`81b4df318`](https://github.com/keystonejs/keystone/commit/81b4df3182fc63c583e3fae5c05c528b678cab95), [`c9ca62876`](https://github.com/keystonejs/keystone/commit/c9ca628765f1ecb599c8556de2d31567ddf12504), [`3ce644d5f`](https://github.com/keystonejs/keystone/commit/3ce644d5f2b6e674adb2f155c0e729536079347a), [`51aef1ef0`](https://github.com/keystonejs/keystone/commit/51aef1ef06a89422e89a6118b7820848d5970669)]:
+  - @keystonejs/keystone@12.0.0
+  - @keystonejs/app-admin-ui@7.0.6
+  - @keystonejs/fields@14.0.0
+  - @keystonejs/adapter-mongoose@9.0.0
+  - @keystonejs/app-graphql@6.0.0
+  - @arch-ui/fields@3.0.3
+
 ## 1.0.5
 
 ### Patch Changes
